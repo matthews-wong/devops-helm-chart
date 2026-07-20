@@ -1,0 +1,16 @@
+static-site-chart "{{ .Release.Name }}" is deployed.
+
+  Release:    {{ .Release.Name }}
+  Namespace:  {{ .Release.Namespace }}
+  Replicas:   {{ .Values.replicaCount }}
+
+{{- if .Values.ingress.enabled }}
+Open your browser at:
+
+  http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.host }}{{ .Values.ingress.path }}
+{{- else }}
+Forward the Service to reach it locally:
+
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ .Release.Name }} 8080:{{ .Values.service.port }}
+  # then open http://localhost:8080
+{{- end }}
