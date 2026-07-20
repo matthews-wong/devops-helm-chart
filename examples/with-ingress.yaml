@@ -1,0 +1,21 @@
+# Example values: serve behind an Ingress with TLS.
+replicaCount: 2
+
+image:
+  repository: nginxdemos/hello
+  tag: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: static.example.com
+  path: /
+  pathType: Prefix
+  tls: true
+
+# Keep at least one pod available during voluntary disruptions.
+minAvailable: 1
