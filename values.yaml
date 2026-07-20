@@ -1,0 +1,40 @@
+# Default values for static-site-chart.
+
+# -- Container image to run.
+image:
+  repository: nginxdemos/hello
+  tag: ""          # defaults to .Chart.AppVersion when empty
+  pullPolicy: IfNotPresent
+
+# -- Number of replicas.
+replicaCount: 1
+
+# -- Pod resource requests/limits.
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+# -- Service exposing the pods.
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+# -- Ingress configuration. Disabled by default.
+ingress:
+  enabled: false
+  className: ""        # e.g. nginx
+  host: ""
+  path: /
+  pathType: Prefix
+  tls: false
+
+# -- PodDisruptionBudget. Set minAvailable > 0 to enable.
+minAvailable: 0
+
+# -- Extra labels merged onto every object.
+extraLabels: {}
