@@ -1,0 +1,13 @@
+apiVersion: v2
+name: static-site-chart
+description: Serve a static website from a container behind a Service and optional Ingress
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - static
+  - website
+  - nginx
+home: https://github.com/matthews-wong/devops-helm-chart
+sources:
+  - https://github.com/matthews-wong/devops-helm-chart
